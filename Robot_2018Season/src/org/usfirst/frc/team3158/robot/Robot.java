@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3158.robot.autonomous.Test;
+import org.usfirst.frc.team3158.robot.commands.chassis.EncoderDistanceTest;
 import org.usfirst.frc.team3158.robot.subsystems.chassis.DriveTrainSubsystem;
 import org.usfirst.frc.team3158.robot.subsystems.collector.CollectorSubsystem;
-import org.usfirst.frc.team3158.robots.commands.EncoderDistanceTest;
 
 /**
  * The VM is configured to automatically run this class, and to call the

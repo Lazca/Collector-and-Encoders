@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3158.robot.autonomous;
 
-import org.usfirst.frc.team3158.robots.commands.EncoderDistanceTest;
+import org.usfirst.frc.team3158.robot.commands.chassis.EncoderDistanceTest;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

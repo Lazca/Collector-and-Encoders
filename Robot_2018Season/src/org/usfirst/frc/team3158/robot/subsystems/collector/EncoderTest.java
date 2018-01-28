@@ -1,4 +1,4 @@
-package org.usfirst.frc.team3158.robots.commands.collector;
+package org.usfirst.frc.team3158.robot.subsystems.collector;
 
 import edu.wpi.first.wpilibj.command.Command;
 
