@@ -108,7 +108,7 @@ public double getEncoderRate(){
 	}
 	
 
-//Sets the robot to stop after 10 feet
+//Sets the robot to stop after 10 feet (120 inches)
 	public void encoderTest(){
 
 		double i = encoder.getDistance();
