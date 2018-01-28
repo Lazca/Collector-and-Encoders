@@ -31,6 +31,14 @@ public class DriveTrainSubsystem extends Subsystem {
 	
 	public RobotDrive robotDrive;
 	
+	
+	/*
+	 * This is a simple 4 motor,, single transmission drivetrain
+	 * made to test encoders attached
+	 * to the axis that goes to the wheel
+	 */
+	
+	
 	public DriveTrainSubsystem(){
 		
 		MotorFrontLeft = new Talon (RobotMap.MotorFrontLeft);
@@ -38,13 +46,19 @@ public class DriveTrainSubsystem extends Subsystem {
     	MotorBackRight = new Talon (RobotMap.MotorBackRight);
     	MotorFrontRight = new WPI_TalonSRX (RobotMap.MotorFrontRight);
     	
+    	
+    	//The encoder can be set with four parameters: the two DIO ports to which it
+    	//it is connected, a boolean to invert the values that the encoder returns, 
+    	//and the encodingType, which is used to count rising and/or falling edges. This
+    	//doubles or quadruples the count
     	encoder = new Encoder (8,9, IsEncoderInverted, CounterBase.EncodingType.k4X);
 		encoder.setDistancePerPulse(((3.875*Math.PI)/315.5));
 		encoder.setMaxPeriod(10);
 		encoder.setMinRate(0.1);
 		encoder.setSamplesToAverage(7);
 		
-    	
+		
+    	//Inverted motors to match the front of our chassis
     	MotorFrontLeft.setInverted(true);
     	MotorBackLeft.setInverted(true);
     	MotorFrontRight.setInverted(true);
@@ -65,34 +79,36 @@ public class DriveTrainSubsystem extends Subsystem {
 	}
     
 	
-	
+//Returns the rate of the encoder
 public double getEncoderRate(){
 		
 		return(encoder.getRate());
 		
-		
-		
 	}
 	
-	
+//Returns the distancethe encoder has recorded. This function uses setDistancePerPulse
 	public double getEncoderDistance(){
 		
 		return(encoder.getDistance());
 		
 	}
 	
+//Returns the raw count of the encoder without k2X or k4X
 	public double getEncoderRaw(){
 		
 		return(encoder.getRaw());
 		
 	}
 	
+//Returns the Distance per pulse
 	public double getDistancePerPulse(){
 		
 		return(encoder.getDistancePerPulse());
 		
 	}
 	
+
+//Sets the robot to stop after 10 feet
 	public void encoderTest(){
 
 		double i = encoder.getDistance();
@@ -109,6 +125,8 @@ public double getEncoderRate(){
 	}
 	
 	
+	
+//Resets the Encoder
 	public void encoderReset(){
 		
 		encoder.reset();
@@ -116,31 +134,20 @@ public double getEncoderRate(){
 	}
 		
 	
+//Returns the period
 	@SuppressWarnings("deprecation")
 	public double getEncoderPeriod(){
 		
 		return(encoder.getPeriod());
 	}
 	
-	
-	
-	
- 
 
     public void initDefaultCommand() {
     
     	    	
     	setDefaultCommand(new DefaultDriveCommand());
     }
-    
-    public void GoStraight(){
-    	
-    	MotorFrontLeft.set(0.5);
-    	MotorFrontRight.set(0.5);
-    	MotorBackLeft.set(-0.5);
-    	MotorBackRight.set(-0.5);
-    	
-    }
+
     
 }
 

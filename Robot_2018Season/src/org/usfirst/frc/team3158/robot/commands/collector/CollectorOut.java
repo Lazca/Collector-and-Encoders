@@ -22,7 +22,7 @@ public class CollectorOut extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 
-    Robot.collectorSubsystem.CollectorOut();
+    Robot.collectorSubsystem.collectorOut();
     	
     }
 

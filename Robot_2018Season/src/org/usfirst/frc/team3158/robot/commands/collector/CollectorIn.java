@@ -22,7 +22,7 @@ public class CollectorIn extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.collectorSubsystem.CollectorIn();
+    	Robot.collectorSubsystem.collectorIn();
    
     	
     	
@@ -30,7 +30,9 @@ public class CollectorIn extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+     
+    	return Robot.collectorSubsystem.getLimit();
+    	
     }
 
     // Called once after isFinished returns true

@@ -1,18 +1,15 @@
-package org.usfirst.frc.team3158.robot.subsystems.chassis;
-
-import org.usfirst.frc.team3158.robot.Robot;
+package org.usfirst.frc.team3158.robot.commands.chassis;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class GoStraight extends Command {
+public class EncoderTest extends Command {
 
-    public GoStraight() {
-
-    	requires (Robot.driveTrainSubsystem);
-    	
+    public EncoderTest() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -21,10 +18,6 @@ public class GoStraight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	Robot.driveTrainSubsystem.GoStraight();
-    	
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -24,6 +24,7 @@ public class OI {
 	public Button Eleven;
 
 	public OI(){
+		
 		joystick1 = new Joystick(0);
 		
 		A = new JoystickButton(joystick1, 3);

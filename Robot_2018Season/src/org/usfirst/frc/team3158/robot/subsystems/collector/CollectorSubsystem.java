@@ -25,83 +25,81 @@ public class CollectorSubsystem extends Subsystem {
 
 	
 	
-	//DigitalInput CollectorLimit = new DigitalInput (RobotMap.CollectorLimitSwitch);
+	DigitalInput CollectorLimit;
 	Talon CollectorLeft; 
 	WPI_TalonSRX CollectorLeft1;
-	SpeedController CollectorRight;
+	WPI_TalonSRX CollectorRight;
 	Talon CollectorRight1;
-	//DoubleSolenoid Piston;
-	
+	DoubleSolenoid Piston;
 	Double Speed;
+	boolean LimitState;
+	
+	/*
+	 * This subsystem uses 4 motors for the claw,
+	 * two pistons to open and close the claw, and a limit switch
+	 * to stop the motors once the power cube is in the claw
+	 */
+	
 	
 	public CollectorSubsystem(){
 		
 		CollectorLeft = new Talon (RobotMap.CollectorLeft);
-		//CollectorLeft1 = new WPI_TalonSRX (RobotMap.CollectorLeft1);
-		CollectorRight = new Talon (RobotMap.CollectorRight);
-		//CollectorRight1 = new WPI_TalonSRX (RobotMap.CollectorRight1);
-		//Piston = new DoubleSolenoid (RobotMap.CollectorPistonsOn, RobotMap.CollectorPistonsOff);
-		
-	
-		Speed = RobotMap.Speed;   
+		CollectorLeft1 = new WPI_TalonSRX (RobotMap.CollectorLeft1);
+		CollectorRight = new WPI_TalonSRX (RobotMap.CollectorRight);
+		CollectorRight1 = new Talon (RobotMap.CollectorRight1);
+		Piston = new DoubleSolenoid (RobotMap.CollectorPistonsOn, RobotMap.CollectorPistonsOff);
+		CollectorLimit = new DigitalInput (RobotMap.CollectorLimitSwitch);
+		LimitState = CollectorLimit.get();
+		Speed = RobotMap.Speed; //Used to set the speed of the motors
 
 	}
 	
-	
-	//boolean LimitState;
-	
-	@SuppressWarnings("deprecation")
-	public void CollectorIn(){
+	public void collectorIn(){
 		
-			CollectorLeft.set(-Speed);
-			//CollectorLeft1.set(Speed);	
+			CollectorLeft.set(Speed);
+			CollectorLeft1.set(Speed);	
 			CollectorRight.set(-Speed);
-			//CollectorRight1.set(-Speed);
-			
-		//SmartDashboard.putNumber("Encoder Period", encoder.getPeriod());
+			CollectorRight1.set(-Speed);
 		
 	}
 	
-	public void ClosePiston(){
+	public void closePiston(){
 		
-		//Piston.set(DoubleSolenoid.Value.kForward);
+		Piston.set(DoubleSolenoid.Value.kForward);
 		
 	}
 
-	public void OpenPiston(){
+	public void openPiston(){
 		
-		//Piston.set(DoubleSolenoid.Value.kReverse);
+		Piston.set(DoubleSolenoid.Value.kReverse);
 		
 	}
-	public void CollectorOut(){
+	
+	public void collectorOut(){
 		
-		
-		CollectorLeft.set(Speed);
-		//CollectorLeft1.set(-Speed);
+		CollectorLeft.set(-Speed);
+		CollectorLeft1.set(-Speed);
 		CollectorRight.set(Speed);
-		//CollectorRight1.set(Speed);
-		
-		
-		
+		CollectorRight1.set(Speed);
 		
 	}
 	
 	
 	
-	public void CollectorOff(){
+	public void collectorOff(){
 		
 		CollectorLeft.set(0);
-		//CollectorLeft1.set(0);
+		CollectorLeft1.set(0);
 		CollectorRight.set(0);
-		//CollectorRight1.set(0);
+		CollectorRight1.set(0);
 		
 	}
 	
-	//public boolean GetLimit(){
+	public boolean getLimit(){
 		
-		//return LimitState;
+		return LimitState;
 		
-	
+	}
 
 	
 	
