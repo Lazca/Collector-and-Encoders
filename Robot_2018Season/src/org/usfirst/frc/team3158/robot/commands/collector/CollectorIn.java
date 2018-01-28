@@ -1,18 +1,18 @@
-package org.usfirst.frc.team3158.robots.commands.collector;
+package org.usfirst.frc.team3158.robot.commands.collector;
 
 import org.usfirst.frc.team3158.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class CollectorOut extends Command {
+public class CollectorIn extends Command {
 
-    public CollectorOut() {
+    public CollectorIn() {
 
     	requires (Robot.collectorSubsystem);
-    	
     }
 
     // Called just before this Command runs the first time
@@ -21,8 +21,10 @@ public class CollectorOut extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
-    Robot.collectorSubsystem.CollectorOut();
+    	
+    	Robot.collectorSubsystem.CollectorIn();
+   
+    	
     	
     }
 

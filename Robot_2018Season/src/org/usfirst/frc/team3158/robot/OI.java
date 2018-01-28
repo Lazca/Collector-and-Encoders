@@ -1,9 +1,9 @@
 package org.usfirst.frc.team3158.robot;
 
 import org.usfirst.frc.team3158.robot.commands.chassis.EncoderReset;
-import org.usfirst.frc.team3158.robots.commands.collector.CollectorIn;
-import org.usfirst.frc.team3158.robots.commands.collector.CollectorOff;
-import org.usfirst.frc.team3158.robots.commands.collector.CollectorOut;
+import org.usfirst.frc.team3158.robot.commands.collector.CollectorIn;
+import org.usfirst.frc.team3158.robot.commands.collector.CollectorOff;
+import org.usfirst.frc.team3158.robot.commands.collector.CollectorOut;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;

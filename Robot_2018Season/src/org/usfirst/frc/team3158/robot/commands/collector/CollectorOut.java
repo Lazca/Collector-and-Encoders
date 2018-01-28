@@ -1,4 +1,4 @@
-package org.usfirst.frc.team3158.robots.commands.collector;
+package org.usfirst.frc.team3158.robot.commands.collector;
 
 import org.usfirst.frc.team3158.robot.Robot;
 
@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CollectorOff extends Command {
+public class CollectorOut extends Command {
 
-    public CollectorOff() {
-       
+    public CollectorOut() {
+
     	requires (Robot.collectorSubsystem);
     	
     }
@@ -21,14 +21,14 @@ public class CollectorOff extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	Robot.collectorSubsystem.CollectorOff();
+
+    Robot.collectorSubsystem.CollectorOut();
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
