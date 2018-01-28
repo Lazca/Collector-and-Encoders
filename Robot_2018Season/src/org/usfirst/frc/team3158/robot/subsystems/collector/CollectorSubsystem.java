@@ -1,85 +1,113 @@
-package org.usfirst.frc.team3158.robot.subsystems;
+package org.usfirst.frc.team3158.robot.subsystems.collector;
 
 import org.usfirst.frc.team3158.robot.RobotMap;
 
-import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PWMTalonSRX;
+import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team3158.robot.commands.CollectorOff;;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
 public class CollectorSubsystem extends Subsystem {
 
-	CANTalon CollectorLeft = new CANTalon (RobotMap.CollectorLeft);
-	CANTalon CollectorRight = new CANTalon (RobotMap.CollectorRight);
-	DoubleSolenoid Piston = new DoubleSolenoid (RobotMap.CollectorPistonsOn, RobotMap.CollectorPistonsOff);
-	DigitalInput CollectorLimit = new DigitalInput (RobotMap.CollectorLimitSwitch);
-	double SwitchSpeed = RobotMap.SwitchSpeed;
-	double ScaleSpeed = RobotMap.ScaleSpeed;
-	boolean LimitState;
 	
+	
+	//DigitalInput CollectorLimit = new DigitalInput (RobotMap.CollectorLimitSwitch);
+	Talon CollectorLeft; 
+	WPI_TalonSRX CollectorLeft1;
+	SpeedController CollectorRight;
+	Talon CollectorRight1;
+	//DoubleSolenoid Piston;
+	
+	Double Speed;
+	
+	public CollectorSubsystem(){
+		
+		CollectorLeft = new Talon (RobotMap.CollectorLeft);
+		//CollectorLeft1 = new WPI_TalonSRX (RobotMap.CollectorLeft1);
+		CollectorRight = new Talon (RobotMap.CollectorRight);
+		//CollectorRight1 = new WPI_TalonSRX (RobotMap.CollectorRight1);
+		//Piston = new DoubleSolenoid (RobotMap.CollectorPistonsOn, RobotMap.CollectorPistonsOff);
+		
+	
+		Speed = RobotMap.Speed;   
+
+	}
+	
+	
+	//boolean LimitState;
+	
+	@SuppressWarnings("deprecation")
 	public void CollectorIn(){
 		
-		LimitState = CollectorLimit.get();
-		
-		if(!LimitState){
-		
-			CollectorLeft.set(0.5);
-			CollectorRight.set(-0.5);
+			CollectorLeft.set(-Speed);
+			//CollectorLeft1.set(Speed);	
+			CollectorRight.set(-Speed);
+			//CollectorRight1.set(-Speed);
 			
-		}
+		//SmartDashboard.putNumber("Encoder Period", encoder.getPeriod());
 		
-		if(LimitState){
-			
-			CollectorLeft.set(0);
-			CollectorRight.set(0);
-			Piston.set(DoubleSolenoid.Value.kForward);
+	}
 	
-		}
+	public void ClosePiston(){
 		
-		System.out.println("LimitState" + LimitState);
+		//Piston.set(DoubleSolenoid.Value.kForward);
 		
 	}
 
-	public void CollectorOutSwitch(){
+	public void OpenPiston(){
 		
-		Piston.set(DoubleSolenoid.Value.kReverse);
-		CollectorLeft.set(SwitchSpeed);
-		CollectorRight.set(-SwitchSpeed);
-	
-	}
-	
-	public void CollectorOutScale(){
-		
-		Piston.set(DoubleSolenoid.Value.kReverse);
-		CollectorLeft.set(ScaleSpeed);
-		CollectorRight.set(-ScaleSpeed);
+		//Piston.set(DoubleSolenoid.Value.kReverse);
 		
 	}
+	public void CollectorOut(){
+		
+		
+		CollectorLeft.set(Speed);
+		//CollectorLeft1.set(-Speed);
+		CollectorRight.set(Speed);
+		//CollectorRight1.set(Speed);
+		
+		
+		
+		
+	}
+	
+	
 	
 	public void CollectorOff(){
 		
 		CollectorLeft.set(0);
+		//CollectorLeft1.set(0);
 		CollectorRight.set(0);
+		//CollectorRight1.set(0);
 		
 	}
 	
-	public boolean GetLimit(){
+	//public boolean GetLimit(){
 		
-		return LimitState;
+		//return LimitState;
 		
-	}
+	
 
 	
 	
 	public void initDefaultCommand() {
 	
-		setDefaultCommand(new CollectorOff());
+		
 		
 	}
 }
