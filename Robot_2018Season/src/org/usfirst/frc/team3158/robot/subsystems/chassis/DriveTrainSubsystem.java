@@ -4,11 +4,11 @@ import org.usfirst.frc.team3158.robot.Robot;
 import org.usfirst.frc.team3158.robot.RobotMap;
 import org.usfirst.frc.team3158.robot.commands.chassis.DefaultDriveCommand;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -25,6 +25,9 @@ public class DriveTrainSubsystem extends Subsystem {
 	public Talon MotorFrontLeft;
 	public SpeedController MotorBackRight;
 	public WPI_TalonSRX MotorBackLeft;
+	public TalonSRX kha;
+	int quad;
+	
 	
 	public Encoder encoder;
 	Boolean IsEncoderInverted = true;
@@ -45,7 +48,8 @@ public class DriveTrainSubsystem extends Subsystem {
     	MotorBackLeft = new WPI_TalonSRX (RobotMap.MotorBackLeft);
     	MotorBackRight = new Talon (RobotMap.MotorBackRight);
     	MotorFrontRight = new WPI_TalonSRX (RobotMap.MotorFrontRight);
-    	
+    	kha = new TalonSRX(0);
+    	quad = kha.getSensorCollection().getQuadraturePosition();
     	
     	//The encoder can be set with four parameters: the two DIO ports to which it
     	//it is connected, a boolean to invert the values that the encoder returns, 
@@ -79,28 +83,30 @@ public class DriveTrainSubsystem extends Subsystem {
 	}
     
 	
-//Returns the rate of the encoder
-public double getEncoderRate(){
+	//Returns the rate of the encoder
+	public double getEncoderRate(){
 		
 		return(encoder.getRate());
 		
+	
+		
 	}
 	
-//Returns the distancethe encoder has recorded. This function uses setDistancePerPulse
+	//Returns the distancethe encoder has recorded. This function uses setDistancePerPulse
 	public double getEncoderDistance(){
 		
 		return(encoder.getDistance());
 		
 	}
 	
-//Returns the raw count of the encoder without k2X or k4X
+	//Returns the raw count of the encoder without k2X or k4X
 	public double getEncoderRaw(){
 		
 		return(encoder.getRaw());
 		
 	}
 	
-//Returns the Distance per pulse
+	//Returns the Distance per pulse
 	public double getDistancePerPulse(){
 		
 		return(encoder.getDistancePerPulse());
@@ -108,7 +114,7 @@ public double getEncoderRate(){
 	}
 	
 
-//Sets the robot to stop after 10 feet (120 inches)
+	//Sets the robot to stop after 10 feet (120 inches)
 	public void encoderTest(){
 
 		double i = encoder.getDistance();
@@ -126,7 +132,7 @@ public double getEncoderRate(){
 	
 	
 	
-//Resets the Encoder
+	//Resets the Encoder
 	public void encoderReset(){
 		
 		encoder.reset();
@@ -134,7 +140,7 @@ public double getEncoderRate(){
 	}
 		
 	
-//Returns the period
+	//Returns the period
 	@SuppressWarnings("deprecation")
 	public double getEncoderPeriod(){
 		

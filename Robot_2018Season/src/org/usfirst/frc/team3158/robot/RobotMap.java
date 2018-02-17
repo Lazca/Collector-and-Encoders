@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3158.robot;
 
+import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.Joystick;
 
 /**
@@ -29,6 +30,16 @@ public class RobotMap {
 	public static int MotorFrontRight = 4; // TalonSRX
 	public static int MotorBackRight = 3; // Talon
 	public static int MotorBackLeft = 2; // TalonSRX
+	
+	//PID
+	public static edu.wpi.first.wpilibj.SPI.Port PIDport;
+	public static boolean isNavx;
+	public static int gyro;
+	
+	//Escalator 2013
+	public static int EscalatorMotor1 = 6;
+	public static int EscalatorMotor2 = 5;
+	
 	
 }
 	

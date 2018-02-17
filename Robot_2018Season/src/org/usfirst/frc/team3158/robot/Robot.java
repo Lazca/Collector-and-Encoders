@@ -27,7 +27,7 @@ public class Robot extends IterativeRobot {
 
 	public static CollectorSubsystem collectorSubsystem;
 	public static DriveTrainSubsystem driveTrainSubsystem;
-
+	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
 	public static OI oi;
@@ -41,6 +41,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		
 		
+		
 		driveTrainSubsystem = new DriveTrainSubsystem();
 		collectorSubsystem = new CollectorSubsystem();
 		oi = new OI();	
@@ -49,7 +50,7 @@ public class Robot extends IterativeRobot {
 		chooser = new SendableChooser();
 		
 		chooser.addDefault("Default", new EncoderDistanceTest());	
-		//chooser.addObject("Test", new Test());
+		chooser.addObject("Test", new Test());
 		chooser.addObject("EncoderTest", new EncoderDistanceTest());
 		SmartDashboard.putData("Auto mode chooser", chooser);
 		
@@ -106,7 +107,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		//Scheduler.getInstance().run();
+		Scheduler.getInstance().run();
 	
 	}
 
