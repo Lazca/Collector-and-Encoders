@@ -3,7 +3,7 @@ package org.usfirst.frc.team3158.robot;
 import org.usfirst.frc.team3158.robot.commands.chassis.EncoderReset;
 import org.usfirst.frc.team3158.robot.commands.collector.CollectorIn;
 import org.usfirst.frc.team3158.robot.commands.collector.CollectorOff;
-import org.usfirst.frc.team3158.robot.commands.collector.CollectorOut;
+import org.usfirst.frc.team3158.robot.commands.collector.CollectorOutFront;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -45,7 +45,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		
 		L2.whenPressed(new CollectorIn());
 		L2.whenReleased(new CollectorOff());
-		R2.whenPressed(new CollectorOut());
+		R2.whenPressed(new CollectorOutFront());
 		R2.whenReleased(new CollectorOff());
 		Eleven.whenPressed(new EncoderReset());
 		

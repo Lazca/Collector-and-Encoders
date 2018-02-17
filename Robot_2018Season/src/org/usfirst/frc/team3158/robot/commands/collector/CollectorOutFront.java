@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CollectorOut extends Command {
+public class CollectorOutFront extends Command {
 
-    public CollectorOut() {
+    public CollectorOutFront() {
 
     	requires (Robot.collectorSubsystem);
     	
@@ -22,7 +22,7 @@ public class CollectorOut extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 
-    Robot.collectorSubsystem.collectorOut();
+    Robot.collectorSubsystem.collectorOutFront();
     	
     }
 

@@ -41,15 +41,20 @@ public class CollectorSubsystem extends Subsystem {
 	}
 	
 	
-	public void collectorOut(){
+	public void collectorOutFront(){
 		
-		taIntakeFrontLeft.set(ControlMode.PercentOutput, -1);
-		taIntakeFrontRight.set(ControlMode.PercentOutput, -1);
-		taIntakeBackLeft.set(ControlMode.PercentOutput, -1);
-		taIntakeBackRight.set(ControlMode.PercentOutput, -1);
+		taIntakeBackLeft.set(ControlMode.PercentOutput, -0.5);
+		taIntakeBackRight.set(ControlMode.PercentOutput, -0.5);
 			
 	}
 	
+	
+	public void collectorOutBack(){
+		
+		taIntakeBackRight.set(ControlMode.PercentOutput, 0.5);
+		taIntakeBackLeft.set(ControlMode.PercentOutput, 0.5);
+		
+	}
 	
 	public void collectorOff(){
 		
