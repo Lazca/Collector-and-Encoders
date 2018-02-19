@@ -40,16 +40,12 @@ public class Robot extends IterativeRobot {
 		
 		
 		
-		driveTrainSubsystem = new DriveTrainSubsystem();
 		collectorSubsystem = new CollectorSubsystem();
 		oi = new OI();	
 
 
 		chooser = new SendableChooser();
 		
-		chooser.addDefault("Default", new EncoderDistanceTest());	
-		chooser.addObject("Test", new Test());
-		chooser.addObject("EncoderTest", new EncoderDistanceTest());
 		SmartDashboard.putData("Auto mode chooser", chooser);
 		
 		
@@ -129,26 +125,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		
-		SmartDashboard.putNumber("Encoder Rate", Robot.driveTrainSubsystem.getEncoderRate());
-		SmartDashboard.putNumber("Encoder Period", Robot.driveTrainSubsystem.getEncoderPeriod());
-		SmartDashboard.putNumber("Encoder Distance", Robot.driveTrainSubsystem.getEncoderDistance());
-		SmartDashboard.putNumber("Encoder Distance Per Pulse", Robot.driveTrainSubsystem.getDistancePerPulse());
-		SmartDashboard.putNumber("Encoder Raw", Robot.driveTrainSubsystem.getEncoderRaw());
-		
-		
-		if(Robot.oi.A.get()== true && Robot.driveTrainSubsystem.getEncoderRate() < 0){
-			
-			System.out.println("Error, negative values");
-			
-		}
-		
-		if(Robot.oi.X.get()== true && Robot.driveTrainSubsystem.getEncoderRate() > 0){
-			
-			System.out.println("Error, positive values");
-			
-		}
-		
 		
 	}
 

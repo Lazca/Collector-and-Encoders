@@ -26,8 +26,7 @@ public class CollectorSubsystem extends Subsystem {
 		taIntakeBackRight = new TalonSRX (3);
 		taArmLeft = new TalonSRX(4);
 		taArmRight = new TalonSRX(5);
-		lsIntake = new DigitalInput (0);
-		LimitState = lsIntake.get();
+
 
 	}
 	
@@ -80,14 +79,6 @@ public class CollectorSubsystem extends Subsystem {
 		taArmRight.set(ControlMode.PercentOutput, -0.5);
 		
 	}
-	
-	
-	public boolean getLimit(){
-		
-		return LimitState;
-		
-	}
-
 	
 	public void initDefaultCommand() {	
 	}
