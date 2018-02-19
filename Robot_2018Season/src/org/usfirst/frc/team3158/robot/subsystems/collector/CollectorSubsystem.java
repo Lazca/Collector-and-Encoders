@@ -11,7 +11,8 @@ public class CollectorSubsystem extends Subsystem {
 
 	DigitalInput lsIntake;
 	TalonSRX taIntakeFrontLeft,taIntakeFrontRight,taArmLeft,taArmRight,taIntakeBackLeft,taIntakeBackRight;
-	boolean LimitState;
+	boolean limitState;
+	boolean isLimit;
 	
 	/*
 	 * This subsystem uses 6 motors for the claw, and a limit switch
@@ -26,7 +27,9 @@ public class CollectorSubsystem extends Subsystem {
 		taIntakeBackRight = new TalonSRX (3);
 		taArmLeft = new TalonSRX(4);
 		taArmRight = new TalonSRX(5);
-
+		lsIntake = new DigitalInput(0);
+		boolean limitState = false;
+		boolean isLimit = false; 
 
 	}
 	
@@ -80,7 +83,22 @@ public class CollectorSubsystem extends Subsystem {
 		
 	}
 	
+	
+	public boolean isLimit(){
+		
+		return isLimit;
+		
+	}
+	
+	public boolean limitState(){
+		
+		return limitState;
+		
+	}
+	
 	public void initDefaultCommand() {	
 	}
+	
+	
 	
 }

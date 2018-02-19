@@ -31,8 +31,10 @@ public class CollectorIn extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
    
-    	return true;
-    	
+    	if(Robot.collectorSubsystem.isLimit()){
+    		return Robot.collectorSubsystem.limitState();
+    	}
+    		return true;
     }
 
     // Called once after isFinished returns true
